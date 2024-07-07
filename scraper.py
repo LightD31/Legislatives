@@ -46,6 +46,7 @@ def get_option_text(option: Tag) -> str:
 
 def parse_result_table(table: BeautifulSoup, department_id: str, cir_number: str, tour: str) -> List[ElectionResult]:
     results = []
+    logger.info(f"Parsing {tour} results for circonscription {cir_number} of department {department_id}")
     for position, row in enumerate(table.find_all('tr')[1:], start=1):
         columns = row.find_all('td')
         candidate = tidy_text(columns[0].text)
